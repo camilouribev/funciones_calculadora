@@ -18,20 +18,23 @@ final public class Main {
 
     final static IntBinaryOperator divide = (dividend, divisor) -> {
        if (divisor == 0) throw new IllegalArgumentException("0 is not a valid number");
-        Integer absDividend = Math.abs(dividend);
-        Integer absDivisor = Math.abs(divisor);
-        Integer result = IntStream.range(0, absDividend+1)
+       Integer absDividend = Math.abs(dividend);
+       Integer absDivisor = Math.abs(divisor);
+       Integer result = IntStream.range(0, absDividend+1)
                 .reduce((acc, num) ->( multiply.applyAsInt(num, absDivisor) <= absDividend) ? sum.applyAsInt(acc,1): acc)
                 .orElse(0);
         return (dividend < 0 && divisor < 0)  || (dividend > 0 && divisor > 0)  ? result : -result;
     };
 
     public static void main(String[] args) {
-
+        System.out.println(sum.applyAsInt(12,13));
+        System.out.println(subtract.applyAsInt(1,-5));
         System.out.println(multiply.applyAsInt(12,-5));
-        System.out.println(divide.applyAsInt(12,-5));
+        System.out.println(divide.applyAsInt(63,9));
 
     }
 
 
-}
+    };
+
+
